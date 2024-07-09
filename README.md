@@ -1,1 +1,1 @@
-# front-SnackHub
+# SnackHub
