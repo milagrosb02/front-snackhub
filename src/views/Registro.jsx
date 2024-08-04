@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Registro = () => {
     return (
 
@@ -81,6 +83,16 @@ const Registro = () => {
                 </form>
                 
             </div>
+
+
+             {/* enlace */}
+             <nav className="mt-5">
+
+                <Link to="/auth/login">
+                    ¿Ya tienes cuenta? Inicia Sesión
+                </Link>
+
+             </nav>
        </>
        
     );
