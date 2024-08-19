@@ -19,6 +19,8 @@ const Sidebar = () => {
              <div className="mt-10">
                 {categorias.map( categoria => (
                     <Categoria 
+                    // siempre que se itera una coleccion se necesita una key
+                    key={categoria.id}
                         // izquierda: nombre del prop y derecha: el valor
                         categoria={categoria}
                     />
