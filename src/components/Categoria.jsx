@@ -1,17 +1,27 @@
+import useSnack from "../hooks/useSnack";
+
 const Categoria = ({categoria}) => {
 
+    const {handleClickCategoria, categoriaActual} = useSnack();
     // accedo a las propiedades de categoria
     const {icono, id, nombre} = categoria
 
     return (
-        <div className="flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer">
+        <div className={`${categoriaActual.id === id ? "bg-amber-400" : 'bg-white'} flex items-center gap-4 border w-full p-3 hover:bg-amber-400 cursor-pointer`}>
            <img 
             alt="imagen icono"
             src={`/img/icono_${icono}.svg`}
             className="w-12"
            />
 
-          <p className="text-lg font-bold cursor-pointer truncate">{nombre}</p> 
+            <button 
+                className="text-lg font-bold cursor-pointer truncate"
+                type="button"
+                onClick={() => handleClickCategoria(id)}
+            >
+                {nombre}
+            </button> 
+
         </div>
     );
 }

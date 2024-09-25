@@ -1,7 +1,11 @@
+import useSnack from "../hooks/useSnack";
 import Categoria from "./Categoria"
-import { categorias } from "../data/categorias"
+
 
 const Sidebar = () => {
+
+    const { categorias } = useSnack()
+
     return (
 
         <aside className='md:w-72'>
