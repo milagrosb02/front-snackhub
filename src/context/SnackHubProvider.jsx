@@ -9,6 +9,10 @@ const SnackHubProvider = ({children}) => {
     const [categorias, setCategorias] = useState(categoriasDB);
     const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
 
+    // modal
+    const [modal, setModal] = useState(false);
+    const [producto, setProducto] = useState({});
+
 
     // funcion para cargar categoria
     const handleClickCategoria = id => {
@@ -18,10 +22,28 @@ const SnackHubProvider = ({children}) => {
     }
 
 
+    // funcion del modal
+    const handleClickModal = () => {
+        setModal(!modal);
+    }
+
+
+    const handleSetProducto = producto => {
+        setProducto(producto)
+    }
+
+
     return (
 
         // en el value hago disponible states y funciones
-        <SnackHubContext.Provider value={{categorias, categoriaActual, handleClickCategoria}}>
+        <SnackHubContext.Provider value={{categorias, 
+                                            categoriaActual, 
+                                            handleClickCategoria, 
+                                            modal, 
+                                            handleClickModal,
+                                            producto,
+                                            handleSetProducto
+                                        }}>
             {children}
         </SnackHubContext.Provider>
     );

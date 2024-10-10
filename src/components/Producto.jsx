@@ -1,7 +1,10 @@
 // arriba se definen funciones y la logica
 import { formatearDinero } from "../helpers";
+import useSnack from "../hooks/useSnack";
 
 function Producto({producto}) {
+
+    const { handleClickModal, handleSetProducto } = useSnack();
     
     const { nombre, imagen, precio } = producto
 
@@ -29,6 +32,10 @@ function Producto({producto}) {
                 <button
                     type="button"
                     className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold"
+                    onClick={() => {
+                        handleClickModal();
+                        handleSetProducto(producto);
+                    }}
                 > Agregar
                 </button>
 
