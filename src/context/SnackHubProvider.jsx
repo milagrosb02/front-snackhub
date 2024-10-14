@@ -13,6 +13,9 @@ const SnackHubProvider = ({children}) => {
     const [modal, setModal] = useState(false);
     const [producto, setProducto] = useState({});
 
+    // resumen
+    const [pedido, setPedido] = useState([]);
+
 
     // funcion para cargar categoria
     const handleClickCategoria = id => {
@@ -33,6 +36,12 @@ const SnackHubProvider = ({children}) => {
     }
 
 
+    // funcion de la seccion de pedidos
+    const handleAgregarPedido = producto => {
+        console.log(producto)
+    }
+
+
     return (
 
         // en el value hago disponible states y funciones
@@ -42,7 +51,9 @@ const SnackHubProvider = ({children}) => {
                                             modal, 
                                             handleClickModal,
                                             producto,
-                                            handleSetProducto
+                                            handleSetProducto,
+                                            pedido,
+                                            handleAgregarPedido
                                         }}>
             {children}
         </SnackHubContext.Provider>
