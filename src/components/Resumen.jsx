@@ -1,8 +1,10 @@
+import { formatearDinero } from "../helpers";
 import useSnack from "../hooks/useSnack";
+import ResumenProducto from "./ResumenProducto";
 
 const Resumen = () => {
 
-    const {pedido} = useSnack();
+    const {pedido, total} = useSnack();
 
     return (
         <aside className='w-72 h-screen overflow-y-scroll p-5'>
@@ -20,7 +22,12 @@ const Resumen = () => {
                         No hay elementos en tu pedido aun
                     </p>
                 ) : (
-                    <p>Si hay algo</p>
+                    pedido.map(producto => (
+                        <ResumenProducto 
+                            key={producto.id}
+                            producto={producto}
+                        />
+                    ))
                 )}
             </div>
 
@@ -28,6 +35,7 @@ const Resumen = () => {
             {/* pago del producto */}
             <p className="text-xl mt-10">
                 Total: {''}
+                {formatearDinero(total)}
             </p>
 
 

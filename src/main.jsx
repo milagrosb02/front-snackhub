@@ -7,14 +7,10 @@ import router from './router'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-    <React.StrictMode>
-
         <SnackHubProvider>
 
             <RouterProvider router={router} />
 
         </SnackHubProvider>
-
-    </React.StrictMode>
 
 )

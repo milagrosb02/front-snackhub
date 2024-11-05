@@ -1,12 +1,23 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import useSnack from "../hooks/useSnack";
 import { formatearDinero } from "../helpers"
 
 const ModalProducto = () => {
 
     // llamo al hook
-    const { producto, handleClickModal, handleAgregarPedido } = useSnack();
+    const { producto, handleClickModal, handleAgregarPedido, pedido } = useSnack();
     const [cantidad, setCandidad] = useState(1);
+    const [edicion, setEdicion] = useState(false);
+
+    // averigua la cantidad del articulo seleccionado y lo mantiene
+    useEffect(()=> {
+       if(pedido.some( pedidoState => pedidoState.id === producto.id )){
+            const productoEdicion = pedido.filter( pedidoState => pedidoState.id === producto.id)[0]
+
+            setCandidad(productoEdicion.cantidad)
+            setEdicion(true)
+       }
+    }, [pedido])
 
 
     return (
@@ -87,9 +98,13 @@ const ModalProducto = () => {
                 <button
                     type="button"
                     className="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5 text-white font-bold uppercase rounded"
-                    onClick={() => handleAgregarPedido({producto, cantidad})}
+                    onClick={() => {
+                        handleAgregarPedido({...producto, cantidad})
+                        handleClickModal()
+                    }}
+
                 >
-                    Añadir al Pedido
+                    {edicion ? 'Guardar Cambios' : 'Añadir al Pedido'}
                 </button>
 
             </div>

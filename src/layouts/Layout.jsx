@@ -1,6 +1,8 @@
 // desde este archivo el usuario va a realizar las ordenes
 import { Outlet } from 'react-router-dom'
 import Modal from 'react-modal';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 import Sidebar from '../components/Sidebar';
 import Resumen from '../components/Resumen';
 import useSnack from '../hooks/useSnack';
@@ -25,7 +27,7 @@ Modal.setAppElement('#root')
 
 const Layout = () => {
 
-    const { modal, handleClickModal } = useSnack();
+    const { modal } = useSnack();
 
     return (
 
@@ -47,6 +49,9 @@ const Layout = () => {
             <Modal isOpen={modal} style={customStyles}>
                 <ModalProducto/>
             </Modal>
+
+
+            <ToastContainer />
             
 
          </>
